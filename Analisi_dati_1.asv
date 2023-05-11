@@ -6,11 +6,11 @@ filename = 'LOG_8.CVS';
 filepath = 'C:\Users\samue\OneDrive - unige.it\Desktop\Matlab\data\Test-lavatrice\';
 
 % Caricare il file CSV come una matrice
-data = readtable("C:\Users\samue\OneDrive - unige.it\Desktop\Matlab\data\Test-lavatrice\IMU_0.CSV");
+data = readtable("C:\Users\samue\OneDrive - unige.it\Desktop\Matlab\data\Test-lavatrice\LOG_8.CSV");
 dati_csv1 = data(:, 1:4); % time, x, y z
-var2 = smoothdata(dati_csv1.x,"loess",100)
-var3 = smoothdata(dati_csv1.y,"loess",100)
-var4 = smoothdata(dati_csv1.z,"loess",100)
+var2 = smoothdata(dati_csv1.Var2,"loess",100)
+var3 = smoothdata(dati_csv1.Var3,"loess",100)
+var4 = smoothdata(dati_csv1.Var4,"loess",100)
 
 
 % Generare casualmente 100 dati di accelerazione (x, y, z)
@@ -30,11 +30,11 @@ y = 2*sin(z) + rand(1,500);
 figure();
 %scatter3(x, y, z, 'filled');
 hold on
-plot(dati_csv1.time, dati_csv1.x)
-plot(dati_csv1.time, dati_csv1.y)
-plot(dati_csv1.time, dati_csv1.z, "g")
+plot(dati_csv1.Var1, dati_csv1.Var2)
+plot(dati_csv1.Var1, dati_csv1.Var3)
+plot(dati_csv1.Var1, dati_csv1.Var4)
 figure();
-scatter3(dati_csv1.x, dati_csv1.y, dati_csv1.z, '*');
+scatter3(dati_csv1.Var2, dati_csv1.Var3, dati_csv1.Var4, '*');
 figure();
 scatter3(var2, var3, var4, '*');
 hold off
